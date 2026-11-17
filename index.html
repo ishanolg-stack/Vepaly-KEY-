@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEPALY KEY — All Courses Placement & Mini-Tests</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b192c;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+    .card {
+      max-width: 500px;
+      width: 100%;
+      background: #112240;
+      border: 2px solid #d4af37;
+      border-radius: 14px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 1px solid #d4af37;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .center-name {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #cbd5e1;
+    }
+    .program {
+      font-size: 21px;
+      font-weight: bold;
+      color: #facc15;
+      margin: 5px 0;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      flex: 1 1 30%;
+      padding: 8px 6px;
+      border: 1px solid #d4af37;
+      background: transparent;
+      color: #facc15;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 7px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .tab-btn.active {
+      background: #d4af37;
+      color: #0b192c;
+    }
+    .level-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #facc15;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 14px;
+      background: #0b192c;
+      padding: 12px;
+      border-radius: 10px;
+    }
+    .q-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #f8fafc;
+      font-size: 14px;
+    }
+    label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .key-rule {
+      background: rgba(212, 175, 55, 0.12);
+      border-left: 4px solid #facc15;
+      padding: 11px;
+      font-size: 13px;
+      margin: 14px 0;
+      border-radius: 6px;
+      line-height: 1.4;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: #facc15;
+      color: #0b192c;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      color: #4ade80;
+    }
+    .contacts {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #cbd5e1;
+      border-top: 1px solid #1e293b;
+      padding-top: 12px;
+    }
+    .contacts a {
+      color: #facc15;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="center-name">VEPALY-ONLINE EDUCATION CENTER</div>
+      <div class="program">PROGRAM: VEPALY KEY</div>
+      <div style="font-size:12px; color:#94a3b8;">100% English Immersion • Grammar & Vocabulary Mix</div>
+    </div>
+
+    <div class="tabs" id="tab-bar"></div>
+    <div class="level-title" id="level-heading"></div>
+    <div id="quiz-box"></div>
+
+    <button class="submit-btn" onclick="checkAnswers()">Check My Result 🔑</button>
+    <div class="result" id="result-box"></div>
+
+    <div class="contacts">
+      <div>Автор программы: МУХАММЕТГУРБАНОВ ИШАНГУЛЫ АННАБЕРДИЕВИЧ</div>
+      <div style="margin-top:6px;">
+        <a href="https://wa.me">WhatsApp (+971 930 58 04)</a> •
+        <a href="https://t.me">Telegram (@vepaly_online7)</a> •
+        <a href="https://instagram.com">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tests = {
+      starter: {
+        btn: "Starter",
+        title: "PREPARATION FOR BEGINNER (Starter)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> Always pair <b>I</b> with <b>am</b>, and use <b>My</b> before a noun (<i>My name</i>). No translation needed!",
+        questions: [
+          { q: "1. ___ name is Timur, and I ___ from Turkmenistan.", options: ["My / am", "I / is", "My / are"], answer: 0 },
+          { q: "2. Which greeting do you use in the evening?", options: ["Good morning", "Good evening", "Goodbye"], answer: 1 },
+          { q: "3. ___ you a student? — Yes, I ___.", options: ["Is / am", "Are / am", "Are / is"], answer: 1 }
+        ]
+      },
+      a1: {
+        btn: "Beginner A1",
+        title: "BEGINNER (Level A1)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> For daily actions with <i>he / she / it</i>, add <b>-s / -es</b> (<i>studies</i>) and use <b>doesn't</b> for negatives.",
+        questions: [
+          { q: "1. My brother ___ English every day, but he ___ watch TV.", options: ["study / don't", "studies / doesn't", "studies / don't"], answer: 1 },
+          { q: "2. What is the opposite of 'expensive'?", options: ["Cheap", "Heavy", "Fast"], answer: 0 },
+          { q: "3. Where ___ your parents live?", options: ["does", "do", "are"], answer: 1 }
+        ]
+      },
+      a2: {
+        btn: "Elementary A2",
+        title: "ELEMENTARY (Level A2)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> When a sentence has a finished past marker (<i>last year</i>, <i>yesterday</i>), switch connected verbs to <b>Past Simple</b>.",
+        questions: [
+          { q: "1. We ___ to Dubai last year, and we ___ a great time.", options: ["go / have", "went / had", "went / have"], answer: 1 },
+          { q: "2. What do you call a person who flies an airplane?", options: ["Driver", "Pilot", "Sailor"], answer: 1 },
+          { q: "3. Look at those dark clouds! It ___ rain soon.", options: ["is going to", "will be", "rained"], answer: 0 }
+        ]
+      },
+      b1: {
+        btn: "Pre-Int B1",
+        title: "PRE-INTERMEDIATE (Level B1)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> Use <b>be going to</b> for decisions made from a present situation, and <b>Present Perfect</b> for life experience without a specific date.",
+        questions: [
+          { q: "1. I ___ my bag at home, so I ___ go back and get it now.", options: ["left / am going to", "leave / was going to", "left / went"], answer: 0 },
+          { q: "2. Which word means 'to give someone confidence or support'?", options: ["Encourage", "Complain", "Refuse"], answer: 0 },
+          { q: "3. Have you ___ visited Saint Petersburg?", options: ["yet", "ever", "yesterday"], answer: 1 }
+        ]
+      },
+      b2: {
+        btn: "Intermediate B2",
+        title: "INTERMEDIATE (Level B2)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> For imaginary situations right now, pair <b>Past Simple</b> (<i>had</i>) with <b>would + verb</b>. Upgrade basic words (<i>very important → crucial</i>).",
+        questions: [
+          { q: "1. If I ___ more free time, I ___ another foreign language.", options: ["have / would learn", "had / would learn", "had / will learn"], answer: 1 },
+          { q: "2. Replace 'very important' with a sharper B2 word:", options: ["Crucial", "Casual", "Trivial"], answer: 0 },
+          { q: "3. By the time the meeting started, the manager ___ the report.", options: ["already reviewed", "had already reviewed", "has reviewed"], answer: 1 }
+        ]
+      },
+      c1: {
+        btn: "Upper-Int C1",
+        title: "UPPER-INTERMEDIATE (Level C1)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> Use <b>Future Perfect Continuous</b> (<i>will have been working</i>) to show the duration of an action up to a future milestone.",
+        questions: [
+          { q: "1. By next month, she ___ at this company for five years.", options: ["will work", "will have been working", "is working"], answer: 1 },
+          { q: "2. What does the idiom 'to cut corners' mean?", options: ["Do something carelessly to save time/money", "Take a shorter street", "Finish early with perfection"], answer: 0 },
+          { q: "3. Not only ___ the exam, but he also won a scholarship.", options: ["he passed", "did he pass", "he did pass"], answer: 1 }
+        ]
+      },
+      c2: {
+        btn: "Advanced C2",
+        title: "ADVANCED (Level C2)",
+        rule: "💡 <b>Vepaly KEY Rule:</b> Dropping <b>'If'</b> in a Third Conditional (<i>Had I known...</i>) creates formal inversion—a hallmark of C2-level mastery.",
+        questions: [
+          { q: "1. Had I known about the traffic, I ___ an earlier train.", options: ["would take", "would have taken", "took"], answer: 1 },
+          { q: "2. Which adjective describes someone who speaks fluently and persuasively?", options: ["Eloquent", "Ambiguous", "Reluctant"], answer: 0 },
+          { q: "3. Scarcely ___ the office when the phone began to ring.", options: ["I had entered", "had I entered", "I entered"], answer: 1 }
+        ]
+      },
+      toefl: {
+        btn: "TOEFL",
+        title: "TOEFL PREPARATION",
+        rule: "💡 <b>Vepaly KEY Rule:</b> With <b>Neither... nor...</b>, the verb agrees with the subject <i>closest</i> to it (<i>students → were</i>). A classic TOEFL trap!",
+        questions: [
+          { q: "1. Neither the professor nor the students ___ aware of the change.", options: ["was", "were", "is"], answer: 1 },
+          { q: "2. In academic passages, 'ubiquitous' is closest in meaning to:", options: ["Rare", "Found everywhere", "Controversial"], answer: 1 },
+          { q: "3. The lecture was so ___ that several students struggled to take notes.", options: ["coherent", "convoluted", "concise"], answer: 1 }
+        ]
+      },
+      masters: {
+        btn: "High School & Master's",
+        title: "HIGH SCHOOL & MASTER'S PREP",
+        rule: "💡 <b>Vepaly KEY Rule:</b> After verbs of recommendation or demand (<i>recommend that...</i>), use the <b>base subjunctive verb</b> without <b>-s</b> (<i>submit</i>).",
+        questions: [
+          { q: "1. The committee recommended that the applicant ___ all documents.", options: ["submits", "submit", "submitted"], answer: 1 },
+          { q: "2. Which verb means 'to confirm or give support to a theory or finding'?", options: ["Corroborate", "Undermine", "Deviate"], answer: 0 },
+          { q: "3. ___ the complexity of the research, the results remain preliminary.", options: ["Despite", "Although", "Whereas"], answer: 0 }
+        ]
+      }
+    };
+
+    let currentLevel = "starter";
+
+    function initTabs() {
+      const tabBar = document.getElementById("tab-bar");
+      Object.keys(tests).forEach((key, index) => {
+        const btn = document.createElement("button");
+        btn.className = "tab-btn" + (index === 0 ? " active" : "");
+        btn.innerText = tests[key].btn;
+        btn.onclick = () => loadLevel(key, btn);
+        tabBar.appendChild(btn);
+      });
+    }
+
+    function loadLevel(level, btn) {
+      currentLevel = level;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      document.getElementById("result-box").innerHTML = "";
+
+      const data = tests[level];
+      document.getElementById("level-heading").innerText = data.title;
+
+      let html = "";
+      data.questions.forEach((item, idx) => {
+        html += `<div class="question"><div class="q-title">${item.q}</div>`;
+        item.options.forEach((opt, optIdx) => {
+          html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+        });
+        html += `</div>`;
+      });
+      html += `<div class="key-rule">${data.rule}</div>`;
+      document.getElementById("quiz-box").innerHTML = html;
+    }
+
+    function checkAnswers() {
+      const data = tests[currentLevel];
+      let score = 0;
+      data.questions.forEach((item, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected && Number(selected.value) === item.answer) {
+          score++;
+        }
+      });
+      const res = document.getElementById("result-box");
+      res.innerHTML = `Your Score: ${score} / ${data.questions.length} 🎉<br><span style="font-size:13px;color:#facc15;">Tap WhatsApp or Telegram below and send "KEY" to enroll in ${data.btn}!</span>`;
+    }
+
+    initTabs();
+    loadLevel("starter");
+  </script>
+</body>
+</html>
